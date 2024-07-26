@@ -64,7 +64,10 @@ export default function Home() {
 
             <div className="w-full h-3/4 overflow-y-auto">
               {cart.map((produs) => (
-                <div className="bg-gray-300 h-20 rounded-lg p-3 flex flex-row my-5">
+                <div
+                  className="bg-gray-300 h-20 rounded-lg p-3 flex flex-row my-5"
+                  key={produs._id}
+                >
                   <div
                     className="h-full w-16 rounded-lg mr-5"
                     style={{
@@ -95,13 +98,14 @@ export default function Home() {
         ></div>
         <div>
           {categories.map((categorie) => (
-            <div className="my-5">
+            <div className="my-5" key={categorie._id}>
               <h2 className="text-3xl font-semibold mb-5">{categorie.nume}</h2>
               <div className="grid w-full grid-cols-6 gap-5">
                 {produse
                   .filter((produs) => produs.categorie === categorie._id)
                   .map((produs) => (
                     <Produs
+                      key={produs._id}
                       _id={produs._id}
                       nume={produs.nume}
                       pret={produs.pret}
